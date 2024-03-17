@@ -1,0 +1,56 @@
+# VScode GoogleTest
+
+VSCode で Google Test を実行します。
+
+Visual Studio での実行は こちら → [VCppGoogleTestDemo](https://github.com/hsytkm/VCppGoogleTestDemo)
+
+
+
+### 準備
+
+参考元を見て以下を対応しました。
+
+1. MinGW-w64 の入手
+
+   [Releases · niXman/mingw-builds-binaries](https://github.com/niXman/mingw-builds-binaries/releases)
+
+   `x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1.7z`
+
+2. CMake の入手
+
+   [Download CMake](https://cmake.org/download/)
+
+   `cmake-3.29.0-rc4-windows-x86_64.zip`
+
+3. GoogleTest のビルド
+
+   [Release v1.14.0 · google/googletest](https://github.com/google/googletest/releases/tag/v1.14.0)
+
+4. GoogleTest の生成物をコピー
+
+   ウェブページの指示通り `C:\dev\mingw64\include` でなく `C:\dev\mingw64\x86_64-w64-mingw32\include` にコピーした。
+
+5. VSCode の拡張機能 `GoogleTest Adapter` をインストールします。
+
+
+
+#### コマンドラインからのテスト実行
+
+```sh
+$ g++ add.c add_test.cpp -o test -g -pthread -lgtest_main -lgtest
+$ ./test.exe
+```
+
+- `-g`: デバッグ情報を含んだ実行ファイルを生成するオプションです。デバッグ情報を含むことで、デバッグ時に変数名や行番号などの情報が使えるようになります。
+- `-pthread` : マルチスレッドプログラミングに使用される pthread ライブラリをリンクします
+- `-lgtest_main` : Google Test のメイン関数を提供するライブラリをリンクします。
+- `-lgtest` : Google Test の本体のライブラリをリンクします。
+
+
+
+#### 参考元
+
+[Google Test を使ってみる（その１：準備編） | 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/11/04/google-test-01/)
+
+[Google Test を使ってみる（その４：VSCode拡張機能編） | 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/11/20/google-test-04/)
+
