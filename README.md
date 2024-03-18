@@ -8,7 +8,11 @@ Visual Studio での実行は こちら → [VCppGoogleTestDemo](https://github.
 
 ### 準備
 
-参考元を見て以下を対応しました。
+以下を参考に対応しました。
+
+[Google Test を使ってみる（その１：準備編） | 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/11/04/google-test-01/)
+
+[Google Test を使ってみる（その４：VSCode拡張機能編） | 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/11/20/google-test-04/)
 
 1. MinGW-w64 の入手
 
@@ -28,13 +32,13 @@ Visual Studio での実行は こちら → [VCppGoogleTestDemo](https://github.
 
 4. GoogleTest の生成物をコピー
 
-   ウェブページの指示通り `C:\dev\mingw64\include` でなく `C:\dev\mingw64\x86_64-w64-mingw32\include` にコピーした。
+   lib / header ともに、ウェブページの指示通り `C:\dev\mingw64\` 以下でなく `C:\dev\mingw64\x86_64-w64-mingw32\` 以下にコピーします。（多分大事なはず）
 
 5. VSCode の拡張機能 `GoogleTest Adapter` をインストールします。
 
 
 
-#### コマンドラインからのテスト実行
+### テストの実行
 
 ```sh
 $ g++ add.c add_test.cpp -o test -g -pthread -lgtest_main -lgtest
@@ -48,9 +52,13 @@ $ ./test.exe
 
 
 
-#### 参考元
+### 参考元
 
-[Google Test を使ってみる（その１：準備編） | 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/11/04/google-test-01/)
+[google/googletest: GoogleTest - Google Testing and Mocking Framework](https://github.com/google/googletest?tab=readme-ov-file)  GitHub Page
 
-[Google Test を使ってみる（その４：VSCode拡張機能編） | 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/11/20/google-test-04/)
+[GoogleTest User’s Guide | GoogleTest](https://google.github.io/googletest/)  GitHub.io
+
+[Google Test — Google Test ドキュメント日本語訳](http://opencv.jp/googletestdocs/index.html)  日本語の解説ページ  v1.6.0(2011年)ベース
+
+
 
