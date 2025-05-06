@@ -4,7 +4,7 @@ VSCode で Google Test を実行します。
 
 Visual Studio での実行は こちら → [VCppGoogleTestDemo](https://github.com/hsytkm/VCppGoogleTestDemo)
 
-
+2025/05/06 最新ツールでビルドを実行したので更新しました。
 
 ### 準備
 
@@ -18,21 +18,47 @@ Visual Studio での実行は こちら → [VCppGoogleTestDemo](https://github.
 
    [Releases · niXman/mingw-builds-binaries](https://github.com/niXman/mingw-builds-binaries/releases)
 
-   `x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1.7z`
+   `x86_64-15.1.0-release-posix-seh-ucrt-rt_v12-rev0.7z
+`
 
 2. CMake の入手
 
    [Download CMake](https://cmake.org/download/)
 
-   `cmake-3.29.0-rc4-windows-x86_64.zip`
+   `cmake-4.0.1-windows-x86_64.zip`
 
 3. GoogleTest のビルド
 
-   [Release v1.14.0 · google/googletest](https://github.com/google/googletest/releases/tag/v1.14.0)
+   [Release · google/googletest](https://github.com/google/googletest/releases)
+
+   `googletest-1.17.0.tar.gz`
+
+    ```bash
+    mkdir build
+    cd build
+    cmake .. -G "MinGW Makefiles"
+    mingw32-make
+    ```
 
 4. GoogleTest の生成物をコピー
 
    lib / header ともに、ウェブページの指示通り `C:\dev\mingw64\` 以下でなく `C:\dev\mingw64\x86_64-w64-mingw32\` 以下にコピーします。（多分大事なはず）
+
+   lib -> C:\dev\mingw64\x86_64-w64-mingw32\lib
+
+   ```
+   libgmock.a
+   libgmock_main.a
+   libgtest.a
+   libgtest_main.a
+   ```
+
+   inlcude -> C:\dev\mingw64\x86_64-w64-mingw32\include
+
+   ```
+   \googletest\googletest\include\gtest
+   \googletest\googlemock\include\gmock
+   ```
 
 5. VSCode の拡張機能 `GoogleTest Adapter` をインストールします。
 
@@ -41,6 +67,7 @@ Visual Studio での実行は こちら → [VCppGoogleTestDemo](https://github.
 ### テストの実行
 
 ```sh
+$ cd src
 $ g++ add.c add_test.cpp -o test -g -pthread -lgtest_main -lgtest
 $ ./test.exe
 ```
